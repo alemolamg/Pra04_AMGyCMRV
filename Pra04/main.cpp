@@ -49,15 +49,14 @@ void rutaMotoCliente(EcoCityMoto& eco,Cliente& nuestroCliente){
 };
 
 void encuentraCliente(EcoCityMoto& eco,std::string& dniCli){
-    Cliente  nuestroCliente;
+    Cliente* nuestroCliente;
        
         nuestroCliente = eco.buscarCliente(dniCli);   //si no esta salta excepcion
         
-        std::cout << "Cliente: " << nuestroCliente.GetDni() <<", "<<nuestroCliente.GetNombre() <<" Situado en: " << 
-					nuestroCliente.getPosicion().GetLatitud() << "," <<
-					nuestroCliente.getPosicion().GetLongitud() << std::endl;
-        rutaMotoCliente(eco,nuestroCliente);
-        
+        std::cout << "Cliente: " << nuestroCliente->GetDni() <<", "<<nuestroCliente->GetNombre() <<" Situado en: " << 
+					nuestroCliente->getPosicion().GetLatitud() << "," <<
+					nuestroCliente->getPosicion().GetLongitud() << std::endl;
+        rutaMotoCliente(eco,*nuestroCliente);
         
 };
 
@@ -72,7 +71,7 @@ int main(){
         EcoCityMoto eco("clientes_v2.csv","motos.txt");             
        
                 // Paso 2: Mostramos Arbol en inorden &
-       eco.getClientes().recorreInorden();     // ToDo: funciona (comentado para tardar menos)      
+       //eco.getClientes().recorreInorden();     // ToDo: funciona (comentado para tardar menos)      
        std::cout << "--->Total de clientes del Arbol: " << eco.getClientes().numElementos() << std::endl; // nos aseguramos
               
              // Paso 3: Mostramos tamaño del arbol
