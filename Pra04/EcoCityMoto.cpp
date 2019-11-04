@@ -161,11 +161,11 @@ Cliente* EcoCityMoto::buscarCliente(string dni){
     throw std::invalid_argument("No esta este cliente");
 }
 
-AVL<Cliente>& EcoCityMoto::getClientes(){
+map<string,Cliente>& EcoCityMoto::getClientes(){
     return clientes;
 }
 
-VDinamico<Moto>& EcoCityMoto::getMotos(){
+vector<Moto>& EcoCityMoto::getMotos(){
     return motos;
 }
 
@@ -178,7 +178,7 @@ Moto* EcoCityMoto::LocMotoCercana(UTM& ubicacion) {
     Moto *moto;
     
     double dist=999999999, x;
-    for (int i=0; i<motos.tamLogico()-1;i++)                  
+    for (int i=0; i<motos.capacity()-1;i++)                  
         if (motos[i].getStatus()==Bloqueado){
             x=ubicacion.distancia(motos[i].getPosicion());   //distancia en UTM 
             if (x<dist){
