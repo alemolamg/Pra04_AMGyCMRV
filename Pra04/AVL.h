@@ -55,7 +55,7 @@ public:
     AVL(const AVL& orig);
     void recorreInorden() { inorden(raiz,0); };
     AVL<T>& operator=(const AVL<T>& orig);
-    bool busca (const T &dato, T &result);
+    bool busca (const T &dato, T* &result);
     bool buscaIt(const T &dato, T &result);
     unsigned int numElementos();
     unsigned int altura();  
@@ -165,12 +165,13 @@ AVL<T>& AVL<T>::operator =(const AVL<T>& orig){
 };
 
 template<class T>
-bool AVL<T>::busca(const T& ele, T& result){
+bool AVL<T>::busca(const T& ele, T* &result){
     NodoAVL<T> *p=(buscaClave(ele,raiz));
     if(p){
-        result=p->dato;
+        result=&(p->dato);
         return true;
     }
+    result=0;
     return false;
 };
 
@@ -239,7 +240,7 @@ unsigned int AVL<T>::altura(){
 
 template <class T>
 bool AVL<T>::inserta(const T& dato){
-    T resultado;
+    T *resultado;
     bool encontrado = busca(dato, resultado);
     if (!encontrado){
         insertaDato(raiz, dato);

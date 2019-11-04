@@ -38,7 +38,7 @@ public:
     Moto* LocMotoCercana(UTM &ubicacion);
     void desbloqueaMoto(Moto *moto, Cliente *cli);   
     
-    Cliente buscarCliente(string dni);
+    Cliente* buscarCliente(string dni);
     AVL<Cliente>& getClientes();
     VDinamico<Moto>& getMotos();
     

@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=pra03_d
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/pra03_d
+CND_ARTIFACT_NAME_Debug=pra04
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/pra04
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=pra03d.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/pra03d.tar
+CND_PACKAGE_NAME_Debug=pra04.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/pra04.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
-CND_ARTIFACT_NAME_Release=pra03_d
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/pra03_d
+CND_ARTIFACT_NAME_Release=pra04
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/pra04
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
-CND_PACKAGE_NAME_Release=pra03d.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/pra03d.tar
+CND_PACKAGE_NAME_Release=pra04.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/pra04.tar
 #
 # include compiler specific variables
 #
