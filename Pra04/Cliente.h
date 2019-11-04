@@ -14,9 +14,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Itinerario.h"
-#include "listaD.h"
+//#include "listaD.h"
 #include "EcoCityMoto.h"
-
+#include <list>
 
 using namespace std;
 
@@ -29,7 +29,7 @@ class Cliente {
     std::string nombre;
     std::string direccion;
     UTM posicion;
-    ListaD<Itinerario> rutas;
+    std::list<Itinerario> rutas;
     EcoCityMoto *acceso;
     
 public:
@@ -52,7 +52,7 @@ public:
     Moto* buscarMotoCercana();
     void desbloquearMoto(Moto* m);
     void terminarTrayecto();
-    Itinerario& UltimoItinerario() ;
+    //Itinerario& UltimoItinerario() ;
     
     
     std::string GetDireccion() const;
