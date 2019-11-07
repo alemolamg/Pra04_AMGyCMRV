@@ -58,6 +58,10 @@ UTM Cliente::getPosicion() const {
     return posicion;
 }
 
+std::list<Itinerario> Cliente::getRutas() const {
+    return rutas;
+}
+
 double Cliente::distancia(const Cliente& otro) {
     return sqrt(pow((otro.posicion.latitud-posicion.latitud),2)+pow((otro.posicion.longitud-posicion.longitud),2));
 }

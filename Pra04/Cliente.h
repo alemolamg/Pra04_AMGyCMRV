@@ -60,6 +60,7 @@ public:
     std::string GetPass() const;
     std::string GetDni() const;
     UTM getPosicion() const;
+    std::list<Itinerario> getRutas() const;
     
 };
 

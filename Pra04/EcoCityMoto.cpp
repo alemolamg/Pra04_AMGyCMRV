@@ -153,12 +153,15 @@ void EcoCityMoto::SetIdUltimo(unsigned nuevoIdUltimo){
 }
 
 
-Cliente* EcoCityMoto::buscarCliente(string dni){
-    Cliente clnt(dni);
-    Cliente *encontrado;
-    //if(clientes.busca(clnt,encontrado))
-      if(clientes.find(dni))
+Cliente& EcoCityMoto::buscarCliente(string dni){
+    map<string,Cliente>::iterator it;
+    it=clientes.find(dni);
+    if(it!= clientes.end()){
+        Cliente &encontrado =(it->second);
+        std::cout << it->second.getRutas().size() << std::endl;
         return encontrado;
+    }
+        
     throw std::invalid_argument("No esta este cliente");
 }
 

@@ -40,7 +40,7 @@ public:
     Moto* LocMotoCercana(UTM &ubicacion);
     void desbloqueaMoto(Moto *moto, Cliente *cli);   
     
-    Cliente* buscarCliente(string dni);
+    Cliente& buscarCliente(string dni);
     map<string,Cliente>& getClientes();
     vector<Moto>& getMotos();
     
