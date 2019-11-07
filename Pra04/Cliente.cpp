@@ -58,6 +58,10 @@ UTM Cliente::getPosicion() const {
     return posicion;
 }
 
+std::list<Itinerario> Cliente::getRutas() const {
+    return rutas;
+}
+
 double Cliente::distancia(const Cliente& otro) {
     return sqrt(pow((otro.posicion.latitud-posicion.latitud),2)+pow((otro.posicion.longitud-posicion.longitud),2));
 }
@@ -106,6 +110,7 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
     //generamos minutos aleatorios
     int minNuevo=1+rand();
     Itinerario iti(fecha,iniNuevo,finNuevo,idNuevo,minNuevo);
+    rutas.push_back(iti);
 };
 
  bool Cliente::operator >( Cliente &otro) const{
@@ -125,22 +130,26 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         UTM fin(yy,zz);
 
      int min = 0;
-     rutas.insertarFinal(Itinerario(fecha,inicio,fin,acceso->GetIdUltimo(),min,m));
+     rutas.push_back(Itinerario(fecha,inicio,fin,acceso->GetIdUltimo(),min,m));
  };
  
- void Cliente::terminarTrayecto(){
-     ListaD<Itinerario>::Iterador i=rutas.iteradorFin();
-        i.dato().GetVehiculo()->seDesactiva();  //bloquea la moto y la desvincula del cliente
-        Fecha f1= i.dato().GetFecha(); 
-        Fecha f2;     
+ void Cliente::terminarTrayecto(){ //ToDo: adaptar para porcentaje bateria, Pra04
+     list<Itinerario>::iterator i=rutas.end();
+     i--;
+        i->GetVehiculo()->seDesactiva();  //bloquea la moto y la desvincula del cliente
+        Fecha f1= i->GetFecha(); 
+        Fecha f2;    
+        //ToDo: agregar practica 04 porcentaje bateria
+        //int minutos=rand()%(int)i->GetVehiculo().getPorcentajeBateria();
+        
         int minutos= (f2.verHora()*60 + f2.verMin())- (f1.verHora()*60 + f1.verMin()); 
-        i.dato().SetMinutos(minutos);
+        i->SetMinutos(minutos);
         
  }
  
  std::ostream& operator<<(std::ostream& out, const Cliente& f){
         return out << f.GetDni() ;
     }
- Itinerario& Cliente::UltimoItinerario() {
-     return rutas.fin();
-}
+ /*Itinerario& Cliente::UltimoItinerario() {
+     return rutas.end()-1;
+}*/

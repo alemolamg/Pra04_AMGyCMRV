@@ -6,19 +6,21 @@
 #ifndef ECOCITYMOTO_H
 #define ECOCITYMOTO_H
 
-
-#include "VDinamico.h"
+//#include "AVL.h"
+//#include "VDinamico.h"
 #include "Cliente.h"
 #include "Moto.h"
-#include "AVL.h"
+#include <vector>
+#include <map>
+
 
 using namespace std;
 
 class EcoCityMoto {
 private:
     unsigned idUltimo;
-    VDinamico<Moto> motos;
-    AVL<Cliente> clientes;
+    vector <Moto> motos;
+    map <string,Cliente> clientes;
     
     //---FUNCIONES----------//
     void cargarMotos(string fileNameMotos);
@@ -38,9 +40,9 @@ public:
     Moto* LocMotoCercana(UTM &ubicacion);
     void desbloqueaMoto(Moto *moto, Cliente *cli);   
     
-    Cliente* buscarCliente(string dni);
-    AVL<Cliente>& getClientes();
-    VDinamico<Moto>& getMotos();
+    Cliente& buscarCliente(string dni);
+    map<string,Cliente>& getClientes();
+    vector<Moto>& getMotos();
     
     virtual ~EcoCityMoto();
     

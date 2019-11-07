@@ -7,12 +7,13 @@
 #include "Moto.h"
 
 Moto::Moto(tipoEstado _status,string _id,double _dlat,double _dlon ):
-    status(_status),id(_id),posicion(_dlat,_dlon),usadoPor(nullptr)
+    status(_status),id(_id),posicion(_dlat,_dlon),usadoPor(nullptr),porcentajeBateria((rand()%100)+1)
 {
 }
 
 Moto::Moto(const Moto& orig):
-    status(orig.status),id(orig.id),posicion(orig.posicion),usadoPor(orig.usadoPor){
+    status(orig.status),id(orig.id),posicion(orig.posicion),
+        usadoPor(orig.usadoPor),porcentajeBateria(orig.porcentajeBateria){
 }
 
 Moto::~Moto() {
@@ -30,6 +31,7 @@ Moto& Moto::operator=(const Moto& orig) {
         id=orig.id;
         posicion=orig.posicion;
         usadoPor=orig.usadoPor;
+        porcentajeBateria=orig.porcentajeBateria;
     }
     return *this;
 }
@@ -53,4 +55,17 @@ tipoEstado Moto::getStatus() const {
 
 string Moto::getId() const {
     return id;
+}
+
+void Moto::setPorcentajeBateria(float porcentajeBateria) {
+    this->porcentajeBateria = porcentajeBateria;
+}
+
+float Moto::getPorcentajeBateria() const {
+    return porcentajeBateria;
+}
+
+void Moto::setStatus(tipoEstado status) {
+    //ToDo: cambiar status para verificar los diferentes medios
+    this->status = status;
 }

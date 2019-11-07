@@ -28,7 +28,7 @@
 #include "Cliente.h"
 #include "Moto.h"
 #include "EcoCityMoto.h"
-
+/*
 void rutaMotoCliente(EcoCityMoto& eco,Cliente& nuestroCliente){
     	Moto *m=nuestroCliente.buscarMotoCercana();
         std::cout << "Moto mas cercana: " << m->getId() << " situada en: " <<
@@ -59,7 +59,7 @@ void encuentraCliente(EcoCityMoto& eco,std::string& dniCli){
         rutaMotoCliente(eco,*nuestroCliente);
         
 };
-
+*/
 
 int main(){    
      
@@ -67,20 +67,20 @@ int main(){
      srand(time(0));
      try{ 
 	 
-		//Paso 1: creamos un AVL con los clientes y también un vector dinamico de motos
+		///Paso 1: creamos un AVL con los clientes y también un vector dinamico de motos
         EcoCityMoto eco("clientes_v2.csv","motos.txt");             
        
-                // Paso 2: Mostramos Arbol en inorden &
+                /// Paso 2: Mostramos Arbol en inorden &
        //eco.getClientes().recorreInorden();     // ToDo: funciona (comentado para tardar menos)      
-       std::cout << "--->Total de clientes del Arbol: " << eco.getClientes().numElementos() << std::endl; // nos aseguramos
+       std::cout << "--->Total de clientes del Arbol: " << eco.getClientes().size() << std::endl; // nos aseguramos
               
-             // Paso 3: Mostramos tamaño del arbol
-       std::cout << "--->Altura del Arbol: " << eco.getClientes().altura() << std::endl;       
+             /// Paso 3: Mostramos tamaño del arbol
+       //std::cout << "--->Altura del Arbol: " << eco.getClientes().altura() << std::endl;       
              
-          //  Paso 4: buscamos un cliente,luego simulamos el uso de una moto 
+          ///  Paso 4: buscamos un cliente,luego simulamos el uso de una moto 
         
        std::string dniNuestroCliente= "70409350R";
-       encuentraCliente(eco,dniNuestroCliente);
+       //encuentraCliente(eco,dniNuestroCliente);
                             
      }catch (ErrorFechaIncorrecta &e){
             std::cerr << "Fecha Incorrecta: " << std::endl;

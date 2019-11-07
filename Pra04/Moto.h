@@ -39,12 +39,17 @@ public:
     tipoEstado getStatus() const;
     
     string getId() const;
+    void setPorcentajeBateria(float porcentajeBateria);
+    float getPorcentajeBateria() const;
+    void setStatus(tipoEstado status);
+    
     
 private:
     string id="";
     tipoEstado status;
     Cliente  *usadoPor; 
     UTM posicion;
+    float porcentajeBateria;
 };
 
 #endif /* MOTO_H */
