@@ -61,7 +61,7 @@ void EcoCityMoto::cargarMotos(string fileNameMotos){ //ToDo: adaptar para map
                 
                 //con todos los atributos leídos, se crea la moto
                 Moto moto(tipo, matricula, dlat, dlon);
-                //motos.insertar(moto); //ToDo no sirve esto
+                motos.push_back(moto); //ToDo no sirve esto
                 //comprobacion lectura
                //std::cout << moto.getId() << ";" << moto.getStatus() <<std::endl;            
             }              
