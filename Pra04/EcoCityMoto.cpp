@@ -13,7 +13,7 @@ EcoCityMoto::~EcoCityMoto() {
 }
 
 
-void EcoCityMoto::cargarMotos(string fileNameMotos){
+void EcoCityMoto::cargarMotos(string fileNameMotos){ //ToDo: adaptar para map
     ifstream fe;               
     string linea;                   
     int total = 0;                 
@@ -62,7 +62,7 @@ void EcoCityMoto::cargarMotos(string fileNameMotos){
                 
                 //con todos los atributos leídos, se crea la moto
                 Moto moto(tipo, matricula, dlat, dlon);
-                motos.insertar(moto);
+                //motos.insertar(moto); //ToDo no sirve esto
                 //comprobacion lectura
                //std::cout << moto.getId() << ";" << moto.getStatus() <<std::endl;            
             }              
@@ -76,7 +76,7 @@ void EcoCityMoto::cargarMotos(string fileNameMotos){
     }
 }
 
-void EcoCityMoto::cargarClientes(string fileNameClientes){
+void EcoCityMoto::cargarClientes(string fileNameClientes){//ToDo: adaptar para map
     std::ifstream fe;                    
     string linea;                   
     int total = 0;                  
@@ -123,7 +123,7 @@ void EcoCityMoto::cargarClientes(string fileNameClientes){
                 
                 //con todos los atributos leídos, se crea el cliente
                 Cliente client (dni, nombre, pass, direccion,dlat, dlon, this);
-                clientes.inserta(client);
+                //clientes.inserta(client); //No Sirve ya
               
                 //mostramos los clientes;
                 //std::cout << client.GetDni() << ";" << client.GetNombre() <<std::endl;            
