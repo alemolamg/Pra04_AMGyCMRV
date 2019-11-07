@@ -13,7 +13,7 @@ EcoCityMoto::~EcoCityMoto() {
 }
 
 
-void EcoCityMoto::cargarMotos(string fileNameMotos){
+void EcoCityMoto::cargarMotos(string fileNameMotos){ //ToDo: adaptar para map
     ifstream fe;               
     string linea;                   
     int total = 0;                 
@@ -62,7 +62,7 @@ void EcoCityMoto::cargarMotos(string fileNameMotos){
                 
                 //con todos los atributos leídos, se crea la moto
                 Moto moto(tipo, matricula, dlat, dlon);
-                motos.insertar(moto);
+                //motos.insertar(moto); //ToDo no sirve esto
                 //comprobacion lectura
                //std::cout << moto.getId() << ";" << moto.getStatus() <<std::endl;            
             }              
@@ -76,7 +76,7 @@ void EcoCityMoto::cargarMotos(string fileNameMotos){
     }
 }
 
-void EcoCityMoto::cargarClientes(string fileNameClientes){
+void EcoCityMoto::cargarClientes(string fileNameClientes){//ToDo: adaptar para map
     std::ifstream fe;                    
     string linea;                   
     int total = 0;                  
@@ -123,7 +123,7 @@ void EcoCityMoto::cargarClientes(string fileNameClientes){
                 
                 //con todos los atributos leídos, se crea el cliente
                 Cliente client (dni, nombre, pass, direccion,dlat, dlon, this);
-                clientes.inserta(client);
+                //clientes.inserta(client); //No Sirve ya
               
                 //mostramos los clientes;
                 //std::cout << client.GetDni() << ";" << client.GetNombre() <<std::endl;            
@@ -153,19 +153,23 @@ void EcoCityMoto::SetIdUltimo(unsigned nuevoIdUltimo){
 }
 
 
-Cliente* EcoCityMoto::buscarCliente(string dni){
-    Cliente clnt(dni);
-    Cliente *encontrado;
-    if(clientes.busca(clnt,encontrado))
+Cliente& EcoCityMoto::buscarCliente(string dni){
+    map<string,Cliente>::iterator it;
+    it=clientes.find(dni);
+    if(it!= clientes.end()){
+        Cliente &encontrado =(it->second);
+        std::cout << it->second.getRutas().size() << std::endl;
         return encontrado;
+    }
+        
     throw std::invalid_argument("No esta este cliente");
 }
 
-AVL<Cliente>& EcoCityMoto::getClientes(){
+map<string,Cliente>& EcoCityMoto::getClientes(){
     return clientes;
 }
 
-VDinamico<Moto>& EcoCityMoto::getMotos(){
+vector<Moto>& EcoCityMoto::getMotos(){
     return motos;
 }
 
@@ -178,7 +182,7 @@ Moto* EcoCityMoto::LocMotoCercana(UTM& ubicacion) {
     Moto *moto;
     
     double dist=999999999, x;
-    for (int i=0; i<motos.tamLogico()-1;i++)                  
+    for (int i=0; i<motos.capacity()-1;i++)                  
         if (motos[i].getStatus()==Bloqueado){
             x=ubicacion.distancia(motos[i].getPosicion());   //distancia en UTM 
             if (x<dist){

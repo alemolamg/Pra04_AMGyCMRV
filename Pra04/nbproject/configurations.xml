@@ -4,15 +4,12 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>AVL.h</itemPath>
       <itemPath>Cliente.h</itemPath>
       <itemPath>EcoCityMoto.h</itemPath>
       <itemPath>Itinerario.h</itemPath>
       <itemPath>Moto.h</itemPath>
       <itemPath>UTM.h</itemPath>
-      <itemPath>VDinamico.h</itemPath>
       <itemPath>fecha.h</itemPath>
-      <itemPath>listaD.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -49,9 +46,10 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <standard>11</standard>
+        </ccTool>
       </compileType>
-      <item path="AVL.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Cliente.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Cliente.h" ex="false" tool="3" flavor2="0">
@@ -70,13 +68,9 @@
       </item>
       <item path="UTM.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="VDinamico.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="fecha.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="fecha.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="listaD.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -101,8 +95,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="AVL.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Cliente.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Cliente.h" ex="false" tool="3" flavor2="0">
@@ -121,13 +113,9 @@
       </item>
       <item path="UTM.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="VDinamico.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="fecha.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="fecha.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="listaD.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
