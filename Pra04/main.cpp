@@ -73,7 +73,7 @@ int main(){
        //eco.getClientes().recorreInorden();     // ToDo: funciona (comentado para tardar menos)      
        std::cout << "--->Total de clientes del Arbol: " << eco.getClientes().size() << std::endl; // nos aseguramos
               
-             /// Paso 3: Mostramos tamaño del arbol
+          
        //std::cout << "--->Altura del Arbol: " << eco.getClientes().altura() << std::endl;       
              
           ///  Paso 4: buscamos un cliente,luego simulamos el uso de una moto 

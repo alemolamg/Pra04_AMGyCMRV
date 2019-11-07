@@ -52,6 +52,7 @@ public:
     Moto* buscarMotoCercana();
     void desbloquearMoto(Moto* m);
     void terminarTrayecto();
+    
     //Itinerario& UltimoItinerario() ;
     
     
