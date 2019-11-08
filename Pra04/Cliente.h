@@ -63,6 +63,8 @@ public:
     UTM getPosicion() const;
     std::list<Itinerario> getRutas() const;
     
+    void cargaItinerario(const Itinerario &iti);//ToDo: Terminar de implementar
+    
 };
 
 std::ostream& operator<<(std::ostream& out, const Cliente& f);

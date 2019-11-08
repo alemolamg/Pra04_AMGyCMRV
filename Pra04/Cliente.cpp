@@ -156,3 +156,9 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
  /*Itinerario& Cliente::UltimoItinerario() {
      return rutas.end()-1;
 }*/
+ 
+
+void Cliente::cargaItinerario(const Itinerario& iti) {
+    rutas.push_back(iti);
+}
+

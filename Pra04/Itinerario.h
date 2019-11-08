@@ -23,6 +23,7 @@ private:
     
 public:
     Itinerario(Fecha fecha ,UTM _inicio,UTM _final, int _id,int _minutos,Moto* m=0);
+    Itinerario(int _id, const UTM &_inicio, const UTM &_fin, const Fecha &_fecha, int _minutos, Moto* m=0);//NUEVO
     Itinerario(const Itinerario& orig);
     virtual ~Itinerario();
     Moto* GetVehiculo() const;
