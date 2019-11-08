@@ -12,7 +12,6 @@
 EcoCityMoto::~EcoCityMoto() {
 }
 
-
 void EcoCityMoto::cargarMotos(string fileNameMotos){ //ToDo: adaptar para map
     ifstream fe;               
     string linea;                   
