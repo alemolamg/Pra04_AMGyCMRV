@@ -139,7 +139,7 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         i->GetVehiculo()->seDesactiva();  //bloquea la moto y la desvincula del cliente
         Fecha f1= i->GetFecha(); 
         Fecha f2;    
-        //ToDo: agregar practica 04 porcentaje 
+         
         int bateria=rand()%(int)i->GetVehiculo()->getPorcentajeBateria();
         if(bateria<=15){
             i->GetVehiculo()->setStatus(SinBateria);

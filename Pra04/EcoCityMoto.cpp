@@ -12,7 +12,7 @@
 EcoCityMoto::~EcoCityMoto() {
 }
 
-void EcoCityMoto::cargarMotos(string fileNameMotos){ //ToDo: adaptar para map
+void EcoCityMoto::cargarMotos(string fileNameMotos){
     ifstream fe;               
     string linea;                   
     int total = 0;                 
