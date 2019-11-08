@@ -52,6 +52,7 @@ public:
     Moto* buscarMotoCercana();
     void desbloquearMoto(Moto* m);
     void terminarTrayecto();
+    
     //Itinerario& UltimoItinerario() ;
     
     
@@ -61,6 +62,8 @@ public:
     std::string GetDni() const;
     UTM getPosicion() const;
     std::list<Itinerario> getRutas() const;
+    
+    void cargaItinerario(const Itinerario &iti);//ToDo: Terminar de implementar
     
 };
 

@@ -139,8 +139,11 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         i->GetVehiculo()->seDesactiva();  //bloquea la moto y la desvincula del cliente
         Fecha f1= i->GetFecha(); 
         Fecha f2;    
-        //ToDo: agregar practica 04 porcentaje bateria
-        //int minutos=rand()%(int)i->GetVehiculo().getPorcentajeBateria();
+         
+        int bateria=rand()%(int)i->GetVehiculo()->getPorcentajeBateria();
+        if(bateria<=15){
+            i->GetVehiculo()->setStatus(SinBateria);
+        };
         
         int minutos= (f2.verHora()*60 + f2.verMin())- (f1.verHora()*60 + f1.verMin()); 
         i->SetMinutos(minutos);
@@ -153,3 +156,9 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
  /*Itinerario& Cliente::UltimoItinerario() {
      return rutas.end()-1;
 }*/
+ 
+
+void Cliente::cargaItinerario(const Itinerario& iti) {
+    rutas.push_back(iti);
+}
+

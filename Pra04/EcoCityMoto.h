@@ -24,7 +24,9 @@ private:
     
     //---FUNCIONES----------//
     void cargarMotos(string fileNameMotos);
-    void cargarClientes(string fileNameClientes);
+    void cargarClientes(const string &fileNameClientes);
+    
+    void crearItinerarios(int num,const UTM &min,const UTM &max);
 
     
     
