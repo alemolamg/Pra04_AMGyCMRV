@@ -12,7 +12,9 @@
 EcoCityMoto::~EcoCityMoto() {
 }
 
-void EcoCityMoto::cargarMotos(string fileNameMotos){
+
+void EcoCityMoto::cargarMotos(string fileNameMotos){ //ToDo: adaptar para map
+
     ifstream fe;               
     string linea;                   
     int total = 0;                 
@@ -61,8 +63,8 @@ void EcoCityMoto::cargarMotos(string fileNameMotos){
                 
                 //con todos los atributos leídos, se crea la moto
                 Moto moto(tipo, matricula, dlat, dlon);
+
                 motos.push_back(moto);
-                
                 //comprobacion lectura
                //std::cout << moto.getId() << ";" << moto.getStatus() <<std::endl;            
             }              
