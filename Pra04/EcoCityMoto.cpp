@@ -324,7 +324,7 @@ Moto* EcoCityMoto::LocMotoCercana(UTM& ubicacion) {
     
     double dist=999999999, x;
     for (int i=0; i<motos.capacity()-1;i++)                  
-        if (motos[i].getStatus()==Bloqueado){
+        if (motos[i].getStatus()==Bloqueado){ //Opcion01
             x=ubicacion.distancia(motos[i].getPosicion());   //distancia en UTM 
             if (x<dist){
                 dist=x;
@@ -342,3 +342,39 @@ void EcoCityMoto::crearItinerarios(int num, const UTM& min, const UTM& max) {
         ++iterador;
     }
 }
+
+void EcoCityMoto::guardarClientesItinerarios(const string& fileName) {
+     ofstream fs;                    //Flujo de salida
+    //Asociamos el flujo al fichero 
+    fs.open(fileName,ofstream::trunc);
+    
+    if(fs.good()){
+        map<string,Cliente>::iterator it=clientes.begin();
+        fs << "2;NIF;clave;nomape;dirección;latitud;longitud;nIti;bajar_linea;id;inicioLat;inicioLon;finLat;finLon;dia;mes;anio;hora;minuto;minutos;moto" << endl;
+        while (it!=clientes.end()){
+            Cliente cli=it->second;
+           // if (cli.GetDni()=="52525252X")
+             //   cout << ",";
+            list<Itinerario> r=cli.getRutas();
+            list<Itinerario>::iterator it2=r.begin();
+            fs << cli.GetDni() <<";"<< cli.GetPass() <<";"<< cli.GetNombre() <<";"<<
+                  cli.GetDireccion() <<";"<< cli.getPosicion().GetLatitud() <<";"<<
+                  cli.getPosicion().GetLongitud() <<";"<< cli.getRutas().size() << endl;
+            while (it2!=r.end()){
+                fs << it2->GetId() <<";"<< it2->GetInicio().GetLatitud() <<";"<<
+                   it2->GetInicio().GetLongitud() <<";"<< it2->GetFin().GetLatitud() <<";"<<
+                   it2->GetFin().GetLongitud() <<";"<< it2->GetFecha().verDia() <<";"<<
+                   it2->GetFecha().verMes() <<";"<< it2->GetFecha().verAnio() <<";"<<
+                   it2->GetFecha().verHora() <<";"<< it2->GetFecha().verMin() <<";"<< 
+                   it2->GetMinutos() <<";"<< it2->GetVehiculo()->getId() << endl;
+                it2++;
+            }
+            it++;
+        }
+    
+        fs.close(); //Cerramos el flujo de entrada        
+    }else{
+        std::cerr<<"No se puede crear el fichero"<<endl;
+    } 
+}
+

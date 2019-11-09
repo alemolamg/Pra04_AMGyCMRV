@@ -20,8 +20,6 @@ bool Cliente::operator<(  Cliente& otro)const {
 }
 
 bool Cliente::operator== ( const Cliente &otro) {
-    //return nombre==otro.nombre;// solo compara nombre completo
-    //return nombre.find(otro.GetNombre())!=std::string::npos;//buscar subcadena dentro string 
     return dni==otro.dni;
 }
 

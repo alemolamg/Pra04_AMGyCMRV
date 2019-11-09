@@ -2,12 +2,11 @@
  * Author: Alemol
  * Created on 28 de octubre de 2019, 11:38
  */
-// Borra esto luego
+
 #ifndef ECOCITYMOTO_H
 #define ECOCITYMOTO_H
 
-//#include "AVL.h"
-//#include "VDinamico.h"
+
 #include "Cliente.h"
 #include "Moto.h"
 #include <vector>
@@ -27,8 +26,7 @@ private:
     void cargarClientes(const string &fileNameClientes);
     
     void crearItinerarios(int num,const UTM &min,const UTM &max);
-
-    
+    void guardarClientesItinerarios(const string &fileName);
     
     
 public:

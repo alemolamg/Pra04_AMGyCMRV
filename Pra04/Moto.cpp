@@ -19,7 +19,7 @@ Moto::Moto(const Moto& orig):
 Moto::~Moto() {
 }
 
-bool Moto::operator==( Moto& orig) const{
+bool Moto::operator==(const Moto& orig) const{
     //return id==orig.id;
 }
 
