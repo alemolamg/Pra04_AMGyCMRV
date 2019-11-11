@@ -19,17 +19,12 @@ enum tipoEstado{Bloqueado,Activo,SinBateria,Rota};
 class Moto {
 public:
     Moto(tipoEstado status=Bloqueado,string _id="",double dlat=0.0,double dlon=0.0 );
-    
     Moto(const Moto& orig);
-    
     virtual ~Moto();
     
     bool operator==( const Moto &orig);
-    
     bool operator<(Moto &orig)const;
-    
     bool operator >(Moto &orig) const;
-    
     Moto& operator=(const Moto &orig);
     
     void seActiva(Cliente *cli);

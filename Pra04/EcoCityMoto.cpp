@@ -266,6 +266,9 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
                        /* vector<Moto>::iterator itMoto=find(motos.begin(),motos.end(),mot);
                         Itinerario iti(id,UTM(iniLat,iniLon),UTM(finLat,finLon),Fecha(dia,mes,anio,hora,min),minutos,&(*itMoto));;
                         itCli->second.cargaItinerario(iti);*/
+                        
+                        //ToDo: Añadir buscaMoto
+                        //vector<Moto*>::iterator itMoto=
                                                
                //id;inicioLat;inicioLon;finLat;finLon;dia;mes;anio;hora;minuto;minutos;moto
                         
