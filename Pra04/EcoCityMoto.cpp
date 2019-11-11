@@ -166,6 +166,19 @@ Cliente& EcoCityMoto::buscarCliente(string dni){
     throw std::invalid_argument("No esta este cliente");
 }
 
+ bool EcoCityMoto::nuevoCliente(Cliente &cli){
+     std::string ident = cli.GetDni();
+     std::pair<string,Cliente>p;
+     p.first=ident;
+     p.second=cli;
+     bool entra= clientes.insert(p).second;
+     return entra;
+ }
+ 
+ bool EcoCityMoto::eliminarCliente(std::string id){
+     return clientes.erase(id);
+ }
+
 map<string,Cliente>& EcoCityMoto::getClientes(){
     return clientes;
 }
@@ -192,4 +205,12 @@ Moto* EcoCityMoto::LocMotoCercana(UTM& ubicacion) {
             }                        
         }
     return moto;
+}
+vector<Moto*> EcoCityMoto::LocMotoSinBateria(float PorcentajeBateria){
+    vector<Moto*> m;
+    for(int i=0;i<motos.size();i++){
+        if(motos[i].getPorcentajeBateria()<=PorcentajeBateria){
+           m.push_back(&motos[i]); 
+        }
+    }
 }

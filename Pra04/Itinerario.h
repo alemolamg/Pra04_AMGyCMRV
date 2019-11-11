@@ -33,7 +33,7 @@ public:
     UTM GetInicio() const;
     void SetMinutos(int minutos);
     int GetMinutos() const;
-    int GetId() const;
+    int GetId() const; 
 };
 
 #endif /* ITINERARIO_H */
