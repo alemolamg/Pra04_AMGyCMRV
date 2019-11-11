@@ -2,11 +2,12 @@
 #include <fstream>
 #include <string>
 #include <stdexcept>
-#include <sstream>
+//#include <sstream>
 #include <locale>
 #include <cstdlib>
+#include <algorithm>
 #include <ctime>
-#include "Vdinamico.h"
+//#include "Vdinamico.h"
 //#include "Avl.h"
 #include "Cliente.h"
 #include "Moto.h"
