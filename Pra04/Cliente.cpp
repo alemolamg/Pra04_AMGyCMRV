@@ -74,7 +74,7 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
     int dia;
     int anio=2019+rand()%(11-1);
     if(mes==2){
-        dia=1+rand()%(29-1);
+        dia=1+rand()%(29-1);  
     }else 
         if(mes==4||mes==6||mes==9||mes==11){
             dia=1+rand()%(31-1);
