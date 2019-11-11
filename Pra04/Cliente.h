@@ -55,7 +55,6 @@ public:
     
     //Itinerario& UltimoItinerario() ;
     
-    
     std::string GetDireccion() const;
     std::string GetNombre() const;
     std::string GetPass() const;

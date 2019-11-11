@@ -1,20 +1,3 @@
-/* 
- * File:   main.cpp
- * Author: Cayetano
- * Created on 11 de octubre de 2019, 11:16
- */
-
-#include <cstdlib>
-#include <vector>
-#include <list>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <iostream>
-#include <locale>
-
-#include "VDinamico.h"
-#include <windows.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -24,74 +7,71 @@
 #include <cstdlib>
 #include <ctime>
 #include "Vdinamico.h"
+//#include "Avl.h"
 #include "Cliente.h"
 #include "Moto.h"
 #include "EcoCityMoto.h"
-/*
-void rutaMotoCliente(EcoCityMoto& eco,Cliente& nuestroCliente){
-    	Moto *m=nuestroCliente.buscarMotoCercana();
-        std::cout << "Moto mas cercana: " << m->getId() << " situada en: " <<
-					m->getPosicion().GetLatitud() << "," << m->getPosicion().GetLongitud() << std::endl;
 
-        std::cout << "Comienza Ruta n: " << eco.GetIdUltimo() << std::endl;
-        nuestroCliente.desbloquearMoto(m);        
-        std::cout << "Desbloqueamos la Moto: " << m->getId() << std::endl;
-		
-        nuestroCliente.terminarTrayecto();
-		
-        std::cout << "Fin de la Ruta: " << nuestroCliente.UltimoItinerario().GetFecha().cadena() <<
-					", Minutos: " << nuestroCliente.UltimoItinerario().GetMinutos() <<
-					", Id: " << nuestroCliente.UltimoItinerario().GetVehiculo()->getId() <<
-					", Pos Fin: " << nuestroCliente.UltimoItinerario().GetFin().GetLatitud() << "<--->" <<
-					nuestroCliente.UltimoItinerario().GetFin().GetLongitud() << std::endl;
-            
-};
-
-void encuentraCliente(EcoCityMoto& eco,std::string& dniCli){
-    Cliente* nuestroCliente;
-       
-        nuestroCliente = eco.buscarCliente(dniCli);   //si no esta salta excepcion
-        
-        std::cout << "Cliente: " << nuestroCliente->GetDni() <<", "<<nuestroCliente->GetNombre() <<" Situado en: " << 
-					nuestroCliente->getPosicion().GetLatitud() << "," <<
-					nuestroCliente->getPosicion().GetLongitud() << std::endl;
-        rutaMotoCliente(eco,*nuestroCliente);
-        
-};
-*/
 
 int main(){    
-     
+/*     
      setlocale(LC_ALL,"es_ES.UTF8"); 
      srand(time(0));
      try{ 
-	 
-		///Paso 1: creamos un AVL con los clientes y también un vector dinamico de motos
-        EcoCityMoto eco("clientes_v2.csv","motos.txt");             
-       
-                /// Paso 2: Mostramos Arbol en inorden &
-       //eco.getClientes().recorreInorden();     // ToDo: funciona (comentado para tardar menos)      
-       std::cout << "--->Total de clientes del Arbol: " << eco.getClientes().size() << std::endl; // nos aseguramos
-              
-          
-       //std::cout << "--->Altura del Arbol: " << eco.getClientes().altura() << std::endl;       
-             
-          ///  Paso 4: buscamos un cliente,luego simulamos el uso de una moto 
+        // 1)creamos estructura y se cargan clientes y motos dentro
+        cout << "Creando Eco.... Comienzo de lectura de ficheros " << endl;   
+        EcoCityMoto eco;  
+    
+          // 5) buscamos un cliente, una moto, la utiliza y la deja
+        Cliente cliente("52525252X", "yo" , "clave", "miDireccion", 37.5, 3.5, &eco);  //ojo no es puntero
+        if (!eco.nuevoCliente(cliente))
+            throw invalid_argument("Cliente NO insertado: el cliente ya existe");
         
-       std::string dniNuestroCliente= "70409350R";
-       //encuentraCliente(eco,dniNuestroCliente);
-                            
+        Cliente &clienteRef=eco.buscarCliente(cliente.GetDni());
+             std::cout << "Cliente: " << clienteRef.GetDni() << " Situado en: " << 
+                    clienteRef.GetPosicion().GetLatitud() << "," <<
+                    clienteRef.GetPosicion().GetLongitud() << std::endl;
+             Moto *m=clienteRef.buscarMotoCercana();
+             std::cout << "Moto mas cercana: " << m->getId() << " situada en: " <<
+                     m->getPosicion().GetLatitud() << "," << m->getPosicion().GetLongitud() << std::endl;
+
+             std::cout << "Comienza Ruta n: " << eco.GetIdUltimo() << std::endl;
+             clienteRef.desbloquearMoto(m);
+             
+             std::cout << "Desbloqueamos la Moto: " << m->getId() << std::endl;
+             clienteRef.terminarTrayecto();
+             std::cout << "Fin de la Ruta: " << clienteRef.UltimoItinerario().GetFecha().cadena() <<
+                     ", Minutos: " << clienteRef.UltimoItinerario().GetMinutos() <<
+                     ", Id: " << clienteRef.UltimoItinerario().GetVehiculo()->getId() <<
+                     ", Pos Fin: " << clienteRef.UltimoItinerario().GetFin().GetLatitud() << "<-->" <<
+                     clienteRef.UltimoItinerario().GetFin().GetLongitud() << std::endl;
+
+             vector<Moto> v=eco.localizaMotosSinBateria(15);             
+             vector<Moto>::iterator itMoto=find(v.begin(),v.end(),m->getId());
+             if (itMoto!=v.end())
+                 cout << "la moto Utilizada quedo sin bateria";  
+        //ahora al acceder si se modificó el cliente ya que se hizo con referencias     
+        cliente=eco.buscarCliente(cliente.GetDni());  //pruebas
+            if (eco.eliminarCliente(cliente.GetDni()))
+                cout << "Borrando cliente: " << cliente.GetDni() << endl;
+            //saltará excepcion en caso de que no este 
+            //asi verificamos que fue borrado
+            cliente=eco.buscarCliente(cliente.GetDni());
+    
+     //Tratamiento de errores
      }catch (ErrorFechaIncorrecta &e){
             std::cerr << "Fecha Incorrecta: " << std::endl;
-     }catch (std::runtime_error &e){ 
+     }catch (std::runtime_error &e){ //std::ifstream::failure &e){
             std::cerr << "Excepcion en fichero: " << e.what() << std::endl;
      }catch (std::bad_alloc &e){
             std::cerr << "No hay memoria suficiente para el objeto dinamico" << std::endl;     
-     
+     /*}catch (ErrorRango &e){
+            std::cerr << e.what() << std::endl;
+     }catch (ErrorNoDatos &e){
+            std::cerr << e.what() << std::endl; ///ToDo: añadir error mas tarde
      }catch (std::invalid_argument &e){
             std::cerr << e.what() << std::endl;
-    }
-       
-    return 0;
+     } 
+    return 0;*/
     
 }

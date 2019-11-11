@@ -258,9 +258,9 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
                         ss3 >> min; ss3.ignore(1);
                         ss3 >> minutos; ss3.ignore(1);
                         ss3 >> mot;
-                        vector<Moto>::iterator itMoto=find(motos.begin(),motos.end(),mot);
+                       /* vector<Moto>::iterator itMoto=find(motos.begin(),motos.end(),mot);
                         Itinerario iti(id,UTM(iniLat,iniLon),UTM(finLat,finLon),Fecha(dia,mes,anio,hora,min),minutos,&(*itMoto));;
-                        itCli->second.cargaItinerario(iti);
+                        itCli->second.cargaItinerario(iti);*/
                                                
                //id;inicioLat;inicioLon;finLat;finLon;dia;mes;anio;hora;minuto;minutos;moto
                         

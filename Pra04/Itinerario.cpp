@@ -10,7 +10,7 @@ Itinerario::Itinerario(Fecha fecha,UTM _inicio,UTM _final, int _id,int _minutos,
 fecha(fecha),inicio(_inicio),fin(_final),id(_id),minutos(_minutos),vehiculo(m){
 };
 
-Itinerario::Itinerario(int _id, const UTM& _inicio, const UTM& _fin, const Fecha& _fecha, int _minutos, Moto* m = 0):
+Itinerario::Itinerario(int _id, const UTM& _inicio, const UTM& _fin, const Fecha& _fecha, int _minutos, Moto* m ):
         id(_id), inicio(_inicio), fin(_fin), 
         fecha(_fecha), minutos(_minutos), vehiculo(m) {}
 

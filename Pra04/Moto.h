@@ -24,7 +24,7 @@ public:
     
     virtual ~Moto();
     
-    bool operator==( const Moto &orig)const;
+    bool operator==( const Moto &orig);
     
     bool operator<(Moto &orig)const;
     
@@ -47,7 +47,7 @@ public:
     
     
 private:
-    std::string id="";
+    std::string id;
     tipoEstado status;
     Cliente  *usadoPor; 
     UTM posicion;

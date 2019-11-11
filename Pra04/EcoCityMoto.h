@@ -6,7 +6,7 @@
 #ifndef ECOCITYMOTO_H
 #define ECOCITYMOTO_H
 
-
+#include <algorithm>
 #include "Cliente.h"
 #include "Moto.h"
 #include <vector>
