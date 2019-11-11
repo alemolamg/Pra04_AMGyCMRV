@@ -69,3 +69,4 @@ void Moto::setStatus(tipoEstado status) {
     //ToDo: cambiar status para verificar los diferentes medios
     this->status = status;
 }
+

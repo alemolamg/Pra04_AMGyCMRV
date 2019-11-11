@@ -38,10 +38,19 @@ public:
     void SetIdUltimo(unsigned nuevoIdUltimo);
     
     Moto* LocMotoCercana(UTM &ubicacion);
-    void desbloqueaMoto(Moto *moto, Cliente *cli);   
+    void desbloqueaMoto(Moto *moto, Cliente *cli);  
+    vector<Moto*> LocMotoSinBateria(float PorcentajeBateria);
     
     Cliente& buscarCliente(string dni);
+    
+    bool nuevoCliente(Cliente &cli);
+    
+    bool eliminarCliente(std::string id);
+    
+    void crearItinerarios(int num,const UTM &min, const UTM &max);
+    
     map<string,Cliente>& getClientes();
+    
     vector<Moto>& getMotos();
     
     virtual ~EcoCityMoto();
