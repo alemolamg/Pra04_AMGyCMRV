@@ -304,7 +304,7 @@ Cliente& EcoCityMoto::buscarCliente(string dni){
     it=clientes.find(dni);
     if(it!= clientes.end()){
         Cliente &encontrado =(it->second);
-        std::cout << it->second.getRutas().size() << std::endl;
+        //std::cout << it->second.getRutas().size() << std::endl;
         return encontrado;
     }
         
@@ -382,4 +382,14 @@ void EcoCityMoto::guardarClientesItinerarios(const string& fileName) {
         std::cerr<<"No se puede crear el fichero"<<endl;
     } 
 }
+
+bool EcoCityMoto::nuevoCliente(Cliente& nuevoCli) {
+    std::string clave=nuevoCli.GetDni();
+    return (clientes.insert(std::pair<std::string,Cliente>(clave,nuevoCli)).second);
+}
+
+bool EcoCityMoto::eliminarCliente(std::string borrameid) {
+    return clientes.erase(borrameid);
+}
+
 
