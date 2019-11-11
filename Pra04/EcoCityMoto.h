@@ -28,6 +28,10 @@ private:
     void crearItinerarios(int num,const UTM &min,const UTM &max);
     void guardarClientesItinerarios(const string &fileName);
     
+    bool nuevoCliente(Cliente& nuevoCli);
+    bool eliminarCliente(std::string borrameid);
+
+    
     
 public:
     EcoCityMoto(const string &file1,const string &file2);

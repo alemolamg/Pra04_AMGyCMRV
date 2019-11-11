@@ -146,7 +146,7 @@ void EcoCityMoto::cargarMotos(string fileNameMotos){ //ToDo: adaptar para map
 
 void EcoCityMoto::cargarClientes(const string &fileNameClientes){
     ifstream fe;                    //Flujo de entrada
-    string tipofichero,linea;                   //Cada línea tiene un clienete
+    string tipofichero,linea;       //Cada línea tiene un clienete
     int total = 0;                  //Contador de líneas o clientes
     
     //Variables auxiliares para almacenar los valores leídos
@@ -160,11 +160,12 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
         double maxLon=-9999999, maxLat=-9999999, minLon=9999999, minLat=9999999;
         //Mientras no se haya llegado al final del fichero
         stringstream ss1;
-        getline(fe, linea); //ojo
+        getline(fe, linea); // quitamos la primera línea
         ss1 << linea;
         //Leemos clave de fichero
         getline(ss1,tipofichero,';');       
         if (tipofichero=="1"){
+            
             
             getline(fe, linea);     //Toma una línea del fichero
             while(!fe.eof()){            
@@ -204,11 +205,11 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
                     Cliente client (dni, nombre, pass, direccion,dlat, dlon, this);
                     clientes[dni]=client;                
 
-                 //   std::cout << client.GetDni() << ";" << client.GetNombre() <<std::endl;            
+                   std::cout << client.GetDni() << ";" << client.GetNombre() <<std::endl;            
                 }              
                 getline(fe, linea);     //Toma una línea del fichero
             }
-            crearItinerarios(3,UTM(minLat,minLon),UTM(maxLat,maxLon));
+            crearItinerarios(2,UTM(minLat,minLon),UTM(maxLat,maxLon));
         }else{
             getline(fe, linea);     //Toma una línea del fichero
             while(!fe.eof()){            
@@ -258,6 +259,10 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
                         ss3 >> min; ss3.ignore(1);
                         ss3 >> minutos; ss3.ignore(1);
                         ss3 >> mot;
+                        
+                        
+                        
+                        
                        /* vector<Moto>::iterator itMoto=find(motos.begin(),motos.end(),mot);
                         Itinerario iti(id,UTM(iniLat,iniLon),UTM(finLat,finLon),Fecha(dia,mes,anio,hora,min),minutos,&(*itMoto));;
                         itCli->second.cargaItinerario(iti);*/
@@ -299,7 +304,7 @@ Cliente& EcoCityMoto::buscarCliente(string dni){
     it=clientes.find(dni);
     if(it!= clientes.end()){
         Cliente &encontrado =(it->second);
-        std::cout << it->second.getRutas().size() << std::endl;
+        //std::cout << it->second.getRutas().size() << std::endl;
         return encontrado;
     }
         
@@ -377,4 +382,14 @@ void EcoCityMoto::guardarClientesItinerarios(const string& fileName) {
         std::cerr<<"No se puede crear el fichero"<<endl;
     } 
 }
+
+bool EcoCityMoto::nuevoCliente(Cliente& nuevoCli) {
+    std::string clave=nuevoCli.GetDni();
+    return (clientes.insert(std::pair<std::string,Cliente>(clave,nuevoCli)).second);
+}
+
+bool EcoCityMoto::eliminarCliente(std::string borrameid) {
+    return clientes.erase(borrameid);
+}
+
 
