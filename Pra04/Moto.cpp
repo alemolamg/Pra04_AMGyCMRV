@@ -22,7 +22,12 @@ Moto::~Moto() {
 bool Moto::operator==(const Moto& orig) {
     return id==orig.id;
 }
-bool Moto::operator<(const Moto &orig){
+
+bool Moto::operator>(Moto& orig) const {
+    return id>orig.id;
+}
+
+bool Moto::operator<( Moto &orig)const{
     return id<orig.id;
 }
 Moto& Moto::operator=(const Moto& orig) {

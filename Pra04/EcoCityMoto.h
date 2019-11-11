@@ -2,12 +2,11 @@
  * Author: Alemol
  * Created on 28 de octubre de 2019, 11:38
  */
-// Borra esto luego
+
 #ifndef ECOCITYMOTO_H
 #define ECOCITYMOTO_H
 
-//#include "AVL.h"
-//#include "VDinamico.h"
+#include <algorithm>
 #include "Cliente.h"
 #include "Moto.h"
 #include <vector>
@@ -24,9 +23,10 @@ private:
     
     //---FUNCIONES----------//
     void cargarMotos(string fileNameMotos);
-    void cargarClientes(string fileNameClientes);
-
+    void cargarClientes(const string &fileNameClientes);
     
+    void crearItinerarios(int num,const UTM &min,const UTM &max);
+    void guardarClientesItinerarios(const string &fileName);
     
     
 public:

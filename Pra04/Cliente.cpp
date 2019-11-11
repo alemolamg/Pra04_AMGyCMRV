@@ -20,8 +20,6 @@ bool Cliente::operator<(  Cliente& otro)const {
 }
 
 bool Cliente::operator== ( const Cliente &otro) {
-    //return nombre==otro.nombre;// solo compara nombre completo
-    //return nombre.find(otro.GetNombre())!=std::string::npos;//buscar subcadena dentro string 
     return dni==otro.dni;
 }
 
@@ -139,7 +137,7 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         i->GetVehiculo()->seDesactiva();  //bloquea la moto y la desvincula del cliente
         Fecha f1= i->GetFecha(); 
         Fecha f2;    
-        //ToDo: agregar practica 04 porcentaje 
+         
         int bateria=rand()%(int)i->GetVehiculo()->getPorcentajeBateria();
         if(bateria<=15){
             i->GetVehiculo()->setStatus(SinBateria);
@@ -156,3 +154,9 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
  /*Itinerario& Cliente::UltimoItinerario() {
      return rutas.end()-1;
 }*/
+ 
+
+void Cliente::cargaItinerario(const Itinerario& iti) {
+    rutas.push_back(iti);
+}
+

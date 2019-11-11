@@ -55,13 +55,14 @@ public:
     
     //Itinerario& UltimoItinerario() ;
     
-    
     std::string GetDireccion() const;
     std::string GetNombre() const;
     std::string GetPass() const;
     std::string GetDni() const;
     UTM getPosicion() const;
     std::list<Itinerario> getRutas() const;
+    
+    void cargaItinerario(const Itinerario &iti);//ToDo: Terminar de implementar
     
 };
 
