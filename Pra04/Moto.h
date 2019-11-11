@@ -24,7 +24,7 @@ public:
     
     virtual ~Moto();
     
-    bool operator==( const Moto &orig)const;
+    //bool operator==( const Moto &orig)const;
     
     bool operator<(Moto &orig)const;
     
