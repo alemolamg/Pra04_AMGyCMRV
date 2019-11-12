@@ -78,72 +78,6 @@ void EcoCityMoto::cargarMotos(string fileNameMotos){ //ToDo: adaptar para map
     }
 }
 
-/*void EcoCityMoto::cargarClientes(string fileNameClientes){//ToDo: adaptar para map
-    std::ifstream fe;                    
-    string linea,tipofichero;                   
-    int total = 0;                  
-    
-    //Variables auxiliares para almacenar los valores leídos
-    string dni, nombre, pass, direccion, latitud, longitud;
-    double dlat, dlon; 
-
-
-    fe.open(fileNameClientes);
-    
-    if(fe.good()){
-        double maxLon=-9999999, maxLat=-9999999, minLon=9999999, minLat=9999999;
-        //Mientras no se haya llegado al final del fichero
-        stringstream ss1;
-        getline(fe, linea); //Se salta la primera linea, solo info
-        ss1 << linea;
-         //leemos la clave
-        getline(ss1,tipofichero,';');     
-        while(!fe.eof()){            
-            stringstream ss;             
-            if(linea!=""){
-                ++total;
-            }            
-  
-            if(total>=1){                
-                //Inicializamos el contenido de ss
-                ss << linea;
-                
-                //Leemos el DNI
-                getline(ss,dni,';');            //El carácter ; se lee y se elimina de ss
-                
-                //Leemos el pass
-                getline(ss,pass,';');           //El caráter ; se lee y se elimina de ss
-
-                //Leemos el nombre
-                getline(ss,nombre,';');         //El caráter ; se lee y se elimina de ss
-                
-                //Leemos la dirección
-                getline(ss,direccion,';');      //El caráter ; se lee y se elimina de ss
-                
-                //Leemos la latitud y longitud
-                getline(ss,latitud,';');        //El caráter ; se lee y se elimina de ss
-                getline(ss,longitud,';');       //El caráter ; se lee y se elimina de ss
-
-                dlat = stod(latitud);
-                dlon = stod(longitud);
-                
-                //con todos los atributos leídos, se crea el cliente
-                Cliente client (dni, nombre, pass, direccion,dlat, dlon, this);
-                //clientes.inserta(client); //No Sirve ya
-              
-                //mostramos los clientes;
-                //std::cout << client.GetDni() << ";" << client.GetNombre() <<std::endl;            
-            }              
-            getline(fe, linea);     //Toma una línea del fichero
-        }    
-        cout<<"Total de clientes en el fichero: " << total <<endl;
-        fe.close(); //Cerramos el flujo de entrada        
-    }else{
-        cerr<<"No se puede abrir el fichero"<<endl;
-    }
-}*/
-
-
 void EcoCityMoto::cargarClientes(const string &fileNameClientes){
     ifstream fe;                    //Flujo de entrada
     string tipofichero,linea;       //Cada línea tiene un clienete
@@ -309,8 +243,8 @@ Cliente& EcoCityMoto::buscarCliente(string dni){
     map<string,Cliente>::iterator it;
     it=clientes.find(dni);
     if(it!= clientes.end()){
+        //return (&(it->second)); //ToDo: cambiar cabacera referencia por puntero para que esto funcione
         Cliente &encontrado =(it->second);
-        //std::cout << it->second.getRutas().size() << std::endl;
         return encontrado;
     }
         

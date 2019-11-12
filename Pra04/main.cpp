@@ -69,7 +69,7 @@ int main(){
      /*}catch (ErrorRango &e){
             std::cerr << e.what() << std::endl;
      }catch (ErrorNoDatos &e){
-            std::cerr << e.what() << std::endl; ///ToDo: añadir error mas tarde
+            std::cerr << e.what() << std::endl; 
      }catch (std::invalid_argument &e){
             std::cerr << e.what() << std::endl;
      } 
