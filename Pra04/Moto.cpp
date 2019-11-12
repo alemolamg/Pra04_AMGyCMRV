@@ -71,6 +71,6 @@ float Moto::getPorcentajeBateria() const {
 }
 
 void Moto::setStatus(tipoEstado status) {
-    //ToDo: cambiar status para verificar los diferentes medios
+    //Cambiar status para verificar los diferentes medios
     this->status = status;
 }
