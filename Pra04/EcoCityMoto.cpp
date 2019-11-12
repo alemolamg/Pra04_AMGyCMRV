@@ -259,16 +259,19 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
                         ss3 >> min; ss3.ignore(1);
                         ss3 >> minutos; ss3.ignore(1);
                         ss3 >> mot;
-                        
-                        
-                        
-                        
-                       /* vector<Moto>::iterator itMoto=find(motos.begin(),motos.end(),mot);
-                        Itinerario iti(id,UTM(iniLat,iniLon),UTM(finLat,finLon),Fecha(dia,mes,anio,hora,min),minutos,&(*itMoto));;
-                        itCli->second.cargaItinerario(iti);*/
+                       
                         
                         //ToDo: Añadir buscaMoto
-                        //vector<Moto*>::iterator itMoto=
+                        //vector<Moto> vec=localizaMotosSinBateria();
+                        vector<Moto>::iterator itMoto=motos.begin();
+                        while(itMoto!=motos.end()){
+                            for(int i=0;i<motos.size()-1;i++){
+                                if(itMoto->getId()==motos[i].getId()){
+                                    std::cout <<"Has encontrado la moto"<<std::endl;
+                                    break;
+                                }
+                            }
+                        }
                                                
                //id;inicioLat;inicioLon;finLat;finLon;dia;mes;anio;hora;minuto;minutos;moto
                         
