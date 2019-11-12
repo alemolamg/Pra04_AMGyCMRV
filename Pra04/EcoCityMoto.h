@@ -12,7 +12,6 @@
 #include <vector>
 #include <map>
 
-
 using namespace std;
 
 class EcoCityMoto {
@@ -23,14 +22,11 @@ private:
     
     //---FUNCIONES----------//
     void cargarMotos(string fileNameMotos);
-    
-    
     void cargarClientes(const string &fileNameClientes);
     void crearItinerarios(int num,const UTM &min,const UTM &max);
     void guardarClientesItinerarios(const string &fileName);    
     //bool nuevoCliente(Cliente& nuevoCli);
-       
-    
+        
 public:
     EcoCityMoto(const string &fileClientes,const string &fileMotos);
     EcoCityMoto(const EcoCityMoto& orig);
@@ -49,10 +45,7 @@ public:
     bool eliminarCliente(std::string borrameid);
     
     virtual ~EcoCityMoto();
-    
-        
-    
+          
 };
 
 #endif /* ECOCITYMOTO_H */
-

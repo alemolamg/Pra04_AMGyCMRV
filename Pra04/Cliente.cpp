@@ -1,7 +1,6 @@
 /* 
  * File:   Cliente.cpp
- * Author: molej
- * 
+ * Author: Alemol
  * Created on 26 de septiembre de 2019, 11:29
  */
 #include "Cliente.h"
@@ -9,12 +8,9 @@
 #include "EcoCityMoto.h"
 #include <algorithm>
 
-
 Cliente::Cliente(const Cliente& orig):
         dni(orig.dni),pass(orig.pass), nombre(orig.nombre),
-        direccion(orig.direccion),rutas(orig.rutas), acceso(orig.acceso),posicion(orig.posicion)
-{}
-
+        direccion(orig.direccion),rutas(orig.rutas), acceso(orig.acceso),posicion(orig.posicion){}
 
 bool Cliente::operator<(  Cliente& otro)const {
     return dni<otro.dni;
@@ -35,7 +31,7 @@ Cliente& Cliente:: operator=(const Cliente &orig) {
         acceso=orig.acceso;
     }
     return *this;
-    }
+}
 
 std::string Cliente::GetDireccion() const {
     return direccion;
@@ -179,4 +175,3 @@ void Cliente::cargaItinerario(const Itinerario& iti) {
 void Cliente::setRutas(list<Itinerario> rutaNueva) {
     this->rutas=rutaNueva;
 }
-
