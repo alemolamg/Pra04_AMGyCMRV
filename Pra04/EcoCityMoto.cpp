@@ -10,6 +10,8 @@
 
 
 EcoCityMoto::~EcoCityMoto() {
+    guardarClientesItinerarios("prueba.txt");
+    std::cout<<"Guardado archivo correctamente"<<std::endl;
 }
 
 

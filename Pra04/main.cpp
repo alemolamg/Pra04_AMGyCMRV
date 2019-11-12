@@ -10,7 +10,6 @@
 #include "Moto.h"
 #include "EcoCityMoto.h"
 
-
 int main(){    
     
      setlocale(LC_ALL,"es_ES.UTF8"); 
