@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Itinerario.h"
-//#include "listaD.h"
 #include "EcoCityMoto.h"
 #include <list>
 
@@ -53,7 +52,7 @@ public:
     void desbloquearMoto(Moto* m);
     void terminarTrayecto();
     
-    //Itinerario& UltimoItinerario() ;
+    Itinerario& UltimoItinerario() ;
     
     std::string GetDireccion() const;
     std::string GetNombre() const;
