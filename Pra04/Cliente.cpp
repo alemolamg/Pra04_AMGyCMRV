@@ -111,6 +111,64 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
     int minNuevo=1+rand();
     Itinerario iti(fecha,iniNuevo,finNuevo,idNuevo,minNuevo);
     rutas.push_back(iti);
+    
+    //ToDo Aqui empieza la parte de la moto
+    
+    vector<Moto*> moto;
+    for(int i=0;i<moto.size();i++){
+        //ponemos la fecha de forma aleatoria
+         srand(time(NULL));
+    int mes=1+rand()%(13-1);
+    int dia;
+    int anio=2019+rand()%(11-1);
+    if(mes==2){
+        dia=1+rand()%(29-1);  
+    }else 
+        if(mes==4||mes==6||mes==9||mes==11){
+            dia=1+rand()%(31-1);
+        }else
+            dia=1+rand()%(32-1);
+    
+    Fecha fecha(dia,mes,anio);
+        //Creamos dos UTM uno para el principio y otro para el final
+     int cont=0;
+    double iniY,iniZ,finalY,finalZ;
+    do{
+        int x=rand()%(10000),xx=rand()%(10000); 
+        double y=x/10000, z=xx/10000;
+        y=y*(max.latitud-min.latitud)+min.latitud;
+        z=z*(max.longitud-min.longitud)+min.longitud;
+        if(cont==0){
+            iniY=y;
+            iniZ=z;
+        }else{
+            finalY=y;
+            finalZ=z; 
+        }
+        ++cont;
+    }while(cont<2);  
+    
+    UTM iniNuevo(iniY,iniZ);
+    UTM finNuevo(finalY,finalZ);
+    
+    //Creamos los minutos aleatorios
+            
+             int minNuevo=1+rand();
+             
+             //Buscamos la moto mas cercana
+             
+             
+             
+             //La activamos y la añadimos al final
+             
+             
+             //Creamos una ruta
+    
+    }
+    for(int i=0;i<moto.size();i++){
+        
+    };
+    
 };
 
  bool Cliente::operator >( Cliente &otro) const{

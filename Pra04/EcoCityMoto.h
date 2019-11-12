@@ -47,7 +47,7 @@ public:
     
     bool eliminarCliente(std::string id);
     
-    void crearItinerarios(int num,const UTM &min, const UTM &max);
+    void crearItinerarios(int num,const UTM &min, const UTM &max);  
     
     map<string,Cliente>& getClientes();
     
