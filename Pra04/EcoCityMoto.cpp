@@ -395,4 +395,11 @@ bool EcoCityMoto::eliminarCliente(std::string borrameid) {
     return clientes.erase(borrameid);
 }
 
+vector<Moto> EcoCityMoto::localizaMotosSinBateria() {
+    vector<Moto> vecMotos;
+        for (int i=0; i<motos.size(); i++)
+            if (motos[i].getPorcentajeBateria()<15)
+                vecMotos.push_back(motos[i]);
+        return vecMotos;
+}
 
