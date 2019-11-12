@@ -23,13 +23,13 @@ private:
     
     //---FUNCIONES----------//
     void cargarMotos(string fileNameMotos);
-    vector<Moto> localizaMotosSinBateria();
+    
     
     void cargarClientes(const string &fileNameClientes);
     void crearItinerarios(int num,const UTM &min,const UTM &max);
     void guardarClientesItinerarios(const string &fileName);    
     //bool nuevoCliente(Cliente& nuevoCli);
-    bool eliminarCliente(std::string borrameid);   
+       
     
 public:
     EcoCityMoto(const string &fileClientes,const string &fileMotos);
@@ -38,6 +38,7 @@ public:
     unsigned GetIdUltimo() const;
     void SetIdUltimo(unsigned nuevoIdUltimo);
     
+    vector<Moto> localizaMotosSinBateria();
     Moto* LocMotoCercana(UTM &ubicacion);
     void desbloqueaMoto(Moto *moto, Cliente *cli);   
     
@@ -45,6 +46,7 @@ public:
     Cliente& buscarCliente(string dni);
     map<string,Cliente>& getClientes();
     vector<Moto>& getMotos();
+    bool eliminarCliente(std::string borrameid);
     
     virtual ~EcoCityMoto();
     

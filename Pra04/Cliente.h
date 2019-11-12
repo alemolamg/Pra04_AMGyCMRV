@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Itinerario.h"
-//#include "listaD.h"
 #include "EcoCityMoto.h"
 #include <list>
 

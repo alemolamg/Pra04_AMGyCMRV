@@ -38,15 +38,23 @@ int main(){
              
              std::cout << "Desbloqueamos la Moto: " << m->getId() << std::endl;
              clienteRef.terminarTrayecto();
-             std::cout << "Fin de la Ruta: " << clienteRef.getRutas().end()-1.GetFecha().cadena() <<
+             std::cout << "Fin de la Ruta: " << clienteRef.UltimoItinerario().GetFecha().cadena() <<
                      ", Minutos: " << clienteRef.UltimoItinerario().GetMinutos() <<
                      ", Id: " << clienteRef.UltimoItinerario().GetVehiculo()->getId() <<
                      ", Pos Fin: " << clienteRef.UltimoItinerario().GetFin().GetLatitud() << "<-->" <<
                      clienteRef.UltimoItinerario().GetFin().GetLongitud() << std::endl;
 
-             vector<Moto> v=eco.localizaMotosSinBateria(15);             
-             vector<Moto>::iterator itMoto=find(v.begin(),v.end(),m->getId());
-             if (itMoto!=v.end())
+             vector<Moto> vecMoto=eco.localizaMotosSinBateria();   
+             vector<Moto>::iterator itMoto=vecMoto.begin();
+             while(itMoto!=vecMoto.end()){
+                 if((*(itMoto)).getId()==m->getId())
+                     cout<<"La moto quedo sin Bateria"<<endl;
+                 itMoto++;
+             }
+             
+             
+             //vector<Moto>::iterator itMoto=find(v.begin(),v.end(),m->getId());
+             if (itMoto!=vecMoto.end())
                  cout << "la moto Utilizada quedo sin bateria";  
         //ahora al acceder si se modificó el cliente ya que se hizo con referencias     
         cliente=eco.buscarCliente(cliente.GetDni());  //pruebas

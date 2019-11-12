@@ -7,6 +7,7 @@
 #include "Cliente.h"
 #include "Moto.h"
 #include "EcoCityMoto.h"
+#include <algorithm>
 
 
 Cliente::Cliente(const Cliente& orig):
@@ -112,7 +113,7 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
     
     //ToDo Aqui empieza la parte de la moto
     
-    /*
+    
     vector<Moto*> moto;
     for(int i=0;i<moto.size();i++){
         //ponemos la fecha de forma aleatoria
@@ -166,7 +167,7 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
     }
     for(int i=0;i<moto.size();i++){
         
-    };*/
+    };
     
     
 };
@@ -212,8 +213,9 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         return out << f.GetDni() ;
     }
  Itinerario& Cliente::UltimoItinerario() {
-    // return (rutas.end())-1;
-     return (rutas.end().operator --());
+     return *rutas.rbegin();
+     // return (rutas.end())-1;
+     //return (rutas.end(-1));
 }
  
 
