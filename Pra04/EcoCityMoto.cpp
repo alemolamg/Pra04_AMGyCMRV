@@ -13,7 +13,7 @@ EcoCityMoto::~EcoCityMoto() {
 }
 
 
-void EcoCityMoto::cargarMotos(string fileNameMotos){ //ToDo: adaptar para map
+void EcoCityMoto::cargarMotos(string fileNameMotos){ 
 
     ifstream fe;               
     string linea;                   
@@ -194,9 +194,6 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
                         ss3 >> minutos; ss3.ignore(1);
                         ss3 >> mot;
                        
-                        
-                        //ToDo: Añadir buscaMoto
-                        //vector<Moto> vec=localizaMotosSinBateria();
                         vector<Moto>::iterator itMoto=motos.begin();
                         while(itMoto!=motos.end()){
                             for(int i=0;i<motos.size()-1;i++){
