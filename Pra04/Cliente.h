@@ -53,7 +53,7 @@ public:
     void desbloquearMoto(Moto* m);
     void terminarTrayecto();
     
-    //Itinerario& UltimoItinerario() ;
+    Itinerario& UltimoItinerario() ;
     
     std::string GetDireccion() const;
     std::string GetNombre() const;

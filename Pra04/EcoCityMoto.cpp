@@ -139,7 +139,7 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
                     Cliente client (dni, nombre, pass, direccion,dlat, dlon, this);
                     clientes[dni]=client;                
 
-                   std::cout << client.GetDni() << ";" << client.GetNombre() <<std::endl;            
+                   //std::cout << client.GetDni() << ";" << client.GetNombre() <<std::endl;            
                 }              
                 getline(fe, linea);     //Toma una línea del fichero
             }
@@ -224,9 +224,9 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
     }    
 }
 
-EcoCityMoto::EcoCityMoto(const string& file1, const string& file2){
-    cargarMotos(file2);
-    cargarClientes(file1);
+EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos){
+    cargarMotos(fileMotos);
+    cargarClientes(fileClientes);
 }
 
     

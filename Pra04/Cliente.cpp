@@ -211,9 +211,10 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
  std::ostream& operator<<(std::ostream& out, const Cliente& f){
         return out << f.GetDni() ;
     }
- /*Itinerario& Cliente::UltimoItinerario() {
-     return rutas.end()-1;
-}*/
+ Itinerario& Cliente::UltimoItinerario() {
+    // return (rutas.end())-1;
+     return (rutas.end().operator --());
+}
  
 
 void Cliente::cargaItinerario(const Itinerario& iti) {
