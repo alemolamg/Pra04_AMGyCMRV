@@ -35,18 +35,19 @@ public:
     
     Cliente(string _dni,string _nombre="", string _pass="", string _direccion="", double _latitud=0.0, double _longitud=0.0, EcoCityMoto *_ecoC=0):
     dni(_dni), pass(_pass), nombre(_nombre), direccion (_direccion),acceso(_ecoC),rutas() ,posicion (_latitud, _longitud){}
-    
     Cliente(): nombre(""), dni(""), pass(""), rutas(), acceso(0), direccion(""), posicion(UTM(0.0,0.0)){};
+    
+    
     Cliente(const Cliente& orig);
     double distancia(const Cliente &otro);
     void crearItinerario(int num,int idUltimo,UTM min, UTM max);
 
     ~Cliente(){};
     
+    bool operator >( Cliente &otro)const;
     bool operator< (  Cliente &otro)const;
     bool operator== ( const Cliente &otro);
     Cliente& operator=(const Cliente &orig);
-    bool operator >( Cliente &otro)const;
     
     Moto* buscarMotoCercana();
     void desbloquearMoto(Moto* m);
@@ -60,8 +61,9 @@ public:
     std::string GetDni() const;
     UTM getPosicion() const;
     std::list<Itinerario> getRutas() const;
+    void setRutas(list<Itinerario> rutaNueva);
     
-    void cargaItinerario(const Itinerario &iti);//ToDo: Terminar de implementar
+    void cargaItinerario(const Itinerario &iti);
     
 };
 

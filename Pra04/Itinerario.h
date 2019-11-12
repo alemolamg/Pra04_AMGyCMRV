@@ -4,13 +4,11 @@
  * Created on 10 de octubre de 2019, 10:51
  */
 
-
 #ifndef ITINERARIO_H
 #define ITINERARIO_H
 #include "fecha.h"
 #include "UTM.h"
 #include "Moto.h"
-
 
 class Itinerario {
 private:
