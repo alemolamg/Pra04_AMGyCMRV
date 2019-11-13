@@ -132,6 +132,7 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         m->seActiva(this);
     
         Itinerario it2(idNuevo,iniCli,creaUTMAleatorio(min,max),fecha,minNuevo,m);
+        //this->posicion=it2.GetFin();
         //Itinerario iti(fecha,iniNuevo,finNuevo,idNuevo,minNuevo,m);
         rutas.push_back(it2);
     } 

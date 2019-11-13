@@ -102,7 +102,6 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
         getline(ss1,tipofichero,';');       
         if (tipofichero=="1"){
             
-            
             getline(fe, linea);     //Toma una línea del fichero
             while(!fe.eof()){            
                 stringstream ss;        //Stream que trabaja sobre buffer interno         
@@ -146,7 +145,7 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
                 getline(fe, linea);     //Toma una línea del fichero
             }
             //ToDo: num itinerarios aleatorios
-            int numItiAlt= 1+rand()%5;
+            int numItiAlt= 1+rand()%3;
             crearItinerarios(numItiAlt,UTM(minLat,minLon),UTM(maxLat,maxLon));
         }else{
             getline(fe, linea);     //Toma una línea del fichero
@@ -267,25 +266,24 @@ void EcoCityMoto::desbloqueaMoto(Moto* moto, Cliente* cli) {
 }
 
 Moto* EcoCityMoto::LocMotoCercana(UTM& ubicacion) {
-    Moto *moto;
-    
+    Moto *MotoCer=0;
     double dist=999999999, x;
-    for (int i=0; i<motos.capacity()-1;i++)                  
-        if (motos[i].getStatus()==Bloqueado){ //Opcion01
+    for (int i=0; i<motos.size()-1;i++)                  
+        if (motos[i].getStatus()==Bloqueado){ 
             x=ubicacion.distancia(motos[i].getPosicion());   //distancia en UTM 
             if (x<dist){
                 dist=x;
-                moto=&motos[i];
+                MotoCer=&motos[i];
             }                        
         }
-    return moto;
+    return MotoCer;
 }
 
 void EcoCityMoto::crearItinerarios(int num, const UTM& min, const UTM& max) {
     map<string,Cliente>::iterator iterador=clientes.begin();
     while (iterador!=clientes.end()) {
         iterador->second.crearItinerario(num,idUltimo,min,max);
-        idUltimo+=num;
+        idUltimo=idUltimo+num;
         ++iterador;
     }
 }
