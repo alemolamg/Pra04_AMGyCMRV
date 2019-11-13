@@ -17,8 +17,8 @@ int main(){
      try{ 
         // 1)creamos estructura y se cargan clientes y motos dentro
         cout << "Creando Eco.... Comienzo de lectura de ficheros " << endl;   
-        EcoCityMoto eco("clientes_v2.csv","motos.txt"); 
-        //EcoCityMoto eco("prueba.txt","motos.txt");  
+        EcoCityMoto eco("clientes_v5.csv","motos2.txt"); 
+        //EcoCityMoto eco("prueba.txt","motos2.txt");  
     
           // 5) buscamos un cliente, una moto, la utiliza y la deja
         Cliente cliente("52525252X", "yo" , "clave", "miDireccion", 37.5, 3.5, &eco);  //ojo no es puntero
