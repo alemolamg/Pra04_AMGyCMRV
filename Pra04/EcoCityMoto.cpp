@@ -8,6 +8,9 @@
 #include <sstream>
 #include "EcoCityMoto.h"
 
+EcoCityMoto::EcoCityMoto(const EcoCityMoto& orig):
+    idUltimo(orig.idUltimo),motos(orig.motos),clientes(orig.clientes){}
+
 
 EcoCityMoto::~EcoCityMoto() {
     guardarClientesItinerarios("prueba.txt");
@@ -24,7 +27,8 @@ void EcoCityMoto::cargarMotos(string fileNameMotos){
     
     string matricula, latitud, longitud,estado;
     double dlat, dlon;
-    int destado; tipoEstado tipo;
+    int destado;
+    tipoEstado tipo;
 
 
     fe.open(fileNameMotos);
@@ -68,7 +72,7 @@ void EcoCityMoto::cargarMotos(string fileNameMotos){
 
                 motos.push_back(moto);
                 //comprobacion lectura
-               //std::cout << moto.getId() << ";" << moto.getStatus() <<std::endl;            
+               //std::cout << moto.getId() << ";" << moto.getPosicion().latitud <<std::endl;            
             }              
             getline(fe, linea);     //Toma una línea del fichero
         }    
@@ -145,7 +149,7 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
                 getline(fe, linea);     //Toma una línea del fichero
             }
             //ToDo: num itinerarios aleatorios
-            int numItiAlt= 1+rand()%3;
+            int numItiAlt= 1+rand()%10;
             crearItinerarios(numItiAlt,UTM(minLat,minLon),UTM(maxLat,maxLon));
         }else{
             getline(fe, linea);     //Toma una línea del fichero
