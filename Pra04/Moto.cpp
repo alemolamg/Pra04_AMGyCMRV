@@ -74,3 +74,7 @@ void Moto::setStatus(tipoEstado status) {
     //Cambiar status para verificar los diferentes medios
     this->status = status;
 }
+
+void Moto::setPosicion(UTM posicion) {
+    this->posicion = posicion;
+}
