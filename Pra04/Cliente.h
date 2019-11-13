@@ -41,6 +41,7 @@ public:
     Cliente(const Cliente& orig);
     double distancia(const Cliente &otro);
     void crearItinerario(int num,int idUltimo,UTM min, UTM max);
+    UTM creaUTMAleatorio(const UTM &min,const UTM &max);
 
     ~Cliente(){};
     

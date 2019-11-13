@@ -145,7 +145,9 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
                 }              
                 getline(fe, linea);     //Toma una línea del fichero
             }
-            crearItinerarios(2,UTM(minLat,minLon),UTM(maxLat,maxLon));
+            //ToDo: num itinerarios aleatorios
+            int numItiAlt= 1+rand()%5;
+            crearItinerarios(numItiAlt,UTM(minLat,minLon),UTM(maxLat,maxLon));
         }else{
             getline(fe, linea);     //Toma una línea del fichero
             while(!fe.eof()){            

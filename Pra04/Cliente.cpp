@@ -61,16 +61,31 @@ double Cliente::distancia(const Cliente& otro) {
     return sqrt(pow((otro.posicion.latitud-posicion.latitud),2)+pow((otro.posicion.longitud-posicion.longitud),2));
 }
 
+UTM Cliente::creaUTMAleatorio(const UTM &min,const UTM &max) {
+    //int cont=0;
+        double iniY,iniZ;
+        srand(time(NULL));
+            int x=rand()%(10000),xx=rand()%(10000); 
+            double y=x/1000, z=xx/1000;
+            y=y*(max.latitud-min.latitud)+min.latitud;
+            z=z*(max.longitud-min.longitud)+min.longitud;
+                iniY=y;
+                iniZ=z;        
+        return  UTM(iniY,iniZ);
+        
+}
+
 void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
     // pagina: https://blog.martincruz.me/2012/09/obtener-numeros-aleatorios-en-c-rand.html
     srand(time(NULL));
     vector<Moto*> motosVector;
+    num= num+rand()%5;
     
     for(int i=0; i<num;i++){
     //Calcula la Fecha aleatoria
     
         int mes=1+rand()%(13-1);
-        int dia;
+        int dia=1;
         int anio=2019+rand()%(11-1);
         if(mes==2){
             dia=1+rand()%(29-1);
@@ -83,7 +98,7 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         Fecha fecha(dia,mes,anio);
     
         //Calcula dos UTM aleatorios dentro del rango
-        int cont=0;
+        /*int cont=0;
         double iniY,iniZ,finalY,finalZ;
         do{
             int x=rand()%(10000),xx=rand()%(10000); 
@@ -98,12 +113,16 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
                 finalZ=z;
             }
             ++cont;
-        }while(cont<2);  
+        }while(cont<2);  */
     
-        UTM iniNuevo(iniY,iniZ);
-        UTM finNuevo(finalY,finalZ);
+        //UTM iniNuevo(iniY,iniZ);
+        //UTM finNuevo(finalY,finalZ);
+        
+        UTM iniCli(posicion); 
+        UTM iniNuevo=creaUTMAleatorio(min,max); 
+         //UTM finNuevo=creaUTMAleatorio(min,max);
     
-        //generamos un id aleatorio
+        //generamos el id         
         int idNuevo=++idUltimo;
     
         //vamos a añadir el itinerario
@@ -112,8 +131,8 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         motosVector.push_back(m);
         m->seActiva(this);
     
-        Itinerario it2(idNuevo,iniNuevo,finNuevo,fecha,minNuevo,m);
-        Itinerario iti(fecha,iniNuevo,finNuevo,idNuevo,minNuevo,m);
+        Itinerario it2(idNuevo,iniCli,creaUTMAleatorio(min,max),fecha,minNuevo,m);
+        //Itinerario iti(fecha,iniNuevo,finNuevo,idNuevo,minNuevo,m);
         rutas.push_back(it2);
     } 
     
