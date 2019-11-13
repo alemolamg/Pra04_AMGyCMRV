@@ -79,7 +79,7 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
     // pagina: https://blog.martincruz.me/2012/09/obtener-numeros-aleatorios-en-c-rand.html
     srand(time(NULL));
     vector<Moto*> motosVector;
-    num= num+rand()%8;
+    //num= num+rand()%8;
     
     for(int i=0; i<num;i++){
     //Calcula la Fecha aleatoria
@@ -103,7 +103,7 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         UTM finNuevo=creaUTMAleatorio(min,max);
     
         //generamos el id         
-        int idNuevo=++idUltimo;
+        ++idUltimo;
     
         //vamos a añadir el itinerario
         int minNuevo=1+rand();  //generamos minutos aleatorios
@@ -111,11 +111,12 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         motosVector.push_back(m);
         m->seActiva(this);
     
-        Itinerario it2(idNuevo,posicion,finNuevo,fecha,minNuevo,m);
-        //Itinerario iti(fecha,iniNuevo,finNuevo,idNuevo,minNuevo,m);
-        rutas.push_back(it2);
+        Itinerario it2(idUltimo,posicion,finNuevo,fecha,minNuevo,m);
         m->setPosicion(finNuevo);
+        rutas.push_back(it2);
         
+        std::cout<<"Mat moto:" << (m->getId()) <<"pos moto:"<< (m->getPosicion().latitud)<<m->getPosicion().longitud << std::endl;
+         
     } 
     
     for(int i=0;i<num;i++){
