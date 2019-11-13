@@ -65,60 +65,66 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
     // pagina: https://blog.martincruz.me/2012/09/obtener-numeros-aleatorios-en-c-rand.html
     srand(time(NULL));
     vector<Moto*> motosVector;
+    
     for(int i=0; i<num;i++){
     //Calcula la Fecha aleatoria
     
-    int mes=1+rand()%(13-1);
-    int dia;
-    int anio=2019+rand()%(11-1);
-    if(mes==2){
-        dia=1+rand()%(29-1);
-    }else 
-        if(mes==4||mes==6||mes==9||mes==11){
-            dia=1+rand()%(31-1);
-        }else
-            dia=1+rand()%(32-1);
+        int mes=1+rand()%(13-1);
+        int dia;
+        int anio=2019+rand()%(11-1);
+        if(mes==2){
+            dia=1+rand()%(29-1);
+        }else 
+            if(mes==4||mes==6||mes==9||mes==11){
+                dia=1+rand()%(31-1);
+            }else
+                dia=1+rand()%(32-1);
     
-    Fecha fecha(dia,mes,anio);
+        Fecha fecha(dia,mes,anio);
     
-    //Calcula dos UTM aleatorios dentro del rango
-    int cont=0;
-    double iniY,iniZ,finalY,finalZ;
-    do{
-        int x=rand()%(10000),xx=rand()%(10000); 
-        double y=x/10000, z=xx/10000;
-        y=y*(max.latitud-min.latitud)+min.latitud;
-        z=z*(max.longitud-min.longitud)+min.longitud;
-        if(cont==0){
-            iniY=y;
-            iniZ=z;
-        }else{
-            finalY=y;
-            finalZ=z;
-        }
-        ++cont;
-    }while(cont<2);  
+        //Calcula dos UTM aleatorios dentro del rango
+        int cont=0;
+        double iniY,iniZ,finalY,finalZ;
+        do{
+            int x=rand()%(10000),xx=rand()%(10000); 
+            double y=x/10000, z=xx/10000;
+            y=y*(max.latitud-min.latitud)+min.latitud;
+            z=z*(max.longitud-min.longitud)+min.longitud;
+            if(cont==0){
+                iniY=y;
+                iniZ=z;
+            }else{
+                finalY=y;
+                finalZ=z;
+            }
+            ++cont;
+        }while(cont<2);  
     
-    UTM iniNuevo(iniY,iniZ);
-    UTM finNuevo(finalY,finalZ);
+        UTM iniNuevo(iniY,iniZ);
+        UTM finNuevo(finalY,finalZ);
     
-    //generamos un id aleatorio
-    int idNuevo=++idUltimo;
+        //generamos un id aleatorio
+        int idNuevo=++idUltimo;
     
-    //vamos a añadir el itinerario
-    int minNuevo=1+rand();  //generamos minutos aleatorios
-    Moto *m=buscarMotoCercana();
-    motosVector.push_back(m);
-    m->seActiva(this);
+        //vamos a añadir el itinerario
+        int minNuevo=1+rand();  //generamos minutos aleatorios
+        Moto *m=buscarMotoCercana();
+        motosVector.push_back(m);
+        m->seActiva(this);
     
-    Itinerario iti(fecha,iniNuevo,finNuevo,idNuevo,minNuevo,m);
-    rutas.push_back(iti);
+        Itinerario it2(idNuevo,iniNuevo,finNuevo,fecha,minNuevo,m);
+        Itinerario iti(fecha,iniNuevo,finNuevo,idNuevo,minNuevo,m);
+        rutas.push_back(it2);
     } 
+    
     for(int i=0;i<num;i++){
         motosVector[i]->seDesactiva();
     }
     
 };
+
+
+
 
  bool Cliente::operator >( Cliente &otro) const{
      return dni>otro.dni;

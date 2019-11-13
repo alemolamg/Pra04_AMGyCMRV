@@ -223,7 +223,8 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
     }    
 }
 
-EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos){
+EcoCityMoto::EcoCityMoto(const string& fileClientes, const string& fileMotos):
+    idUltimo(0), clientes(), motos(){
     cargarMotos(fileMotos);
     cargarClientes(fileClientes);
 }
