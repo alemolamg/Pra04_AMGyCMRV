@@ -177,45 +177,41 @@ void EcoCityMoto::cargarClientes(const string &fileNameClientes){
                     
                     //con todos los atributos leídos, se crea el cliente
                     Cliente client (dni, nombre, pass, direccion,dlat, dlon, this);
-                    clientes[dni]=client;                
+                    clientes[dni]=client; 
+                    //obtengo un iterador al cliente insertado para asignarle los itinerarios
                     map<string,Cliente>::iterator itCli= clientes.find(dni);
                     string nIti,mot;
                     int id,dia,mes,anio,hora,min,minutos;
                     float iniLat,finLat,iniLon,finLon;
                     getline(ss,nIti,';');               
-                    //stringstream ss3;
+              
                     for (int i=0; i<stoi(nIti); i++){
                         getline(fe, linea);
-                        stringstream ss3;
-                        ss3 << linea;
-                        ss3 >> id; ss3.ignore(1);
-                        ss3 >> iniLat; ss3.ignore(1);
-                        ss3 >> iniLon; ss3.ignore(1);
-                        ss3 >> finLat; ss3.ignore(1);
-                        ss3 >> finLon; ss3.ignore(1);
-                        ss3 >> dia; ss3.ignore(1);
-                        ss3 >> mes; ss3.ignore(1);
-                        ss3 >> anio; ss3.ignore(1);
-                        ss3 >> hora; ss3.ignore(1);
-                        ss3 >> min; ss3.ignore(1);
-                        ss3 >> minutos; ss3.ignore(1);
-                        ss3 >> mot;
-                       
+                        stringstream ss_;
+                        ss_ << linea;
+                        ss_ >> id; ss_.ignore(1);
+                        ss_ >> iniLat; ss_.ignore(1);
+                        ss_ >> iniLon; ss_.ignore(1);
+                        ss_ >> finLat; ss_.ignore(1);
+                        ss_ >> finLon; ss_.ignore(1);
+                        ss_ >> dia; ss_.ignore(1);
+                        ss_ >> mes; ss_.ignore(1);
+                        ss_ >> anio; ss_.ignore(1);
+                        ss_ >> hora; ss_.ignore(1);
+                        ss_ >> min; ss_.ignore(1);
+                        ss_ >> minutos; ss_.ignore(1);
+                        ss_ >> mot;
+                        //vector<Moto>::iterator itMoto=find(motos.begin(),motos.end(),mot);
                         vector<Moto>::iterator itMoto=motos.begin();
-                        while(itMoto!=motos.end()){
-                            for(int i=0;i<motos.size()-1;i++){
-                                if(itMoto->getId()==motos[i].getId()){
-                                    std::cout <<"Has encontrado la moto"<<std::endl;
-                                    break;
-                                }
+                        while (itMoto!=motos.end()){
+                            if ((*(itMoto)).getId()==mot){                             
+                                break;
                             }
+                            itMoto++;
                         }
-                                               
-               //id;inicioLat;inicioLon;finLat;finLon;dia;mes;anio;hora;minuto;minutos;moto
-                        
-                    }                    
-                    
-                 //   std::cout << client.GetDni() << ";" << client.GetNombre() <<std::endl;            
+                        Itinerario iti(id,UTM(iniLat,iniLon),UTM(finLat,finLon),Fecha(dia,mes,anio,hora,min),minutos,&(*itMoto));;
+                        itCli->second.cargaItinerario(iti);   //agregamos itinerario al cliente                                  
+                    }                                                               
                 }              
                 getline(fe, linea);     //Toma una línea del fichero
             }
@@ -244,12 +240,12 @@ void EcoCityMoto::SetIdUltimo(unsigned nuevoIdUltimo){
 }
 
 
-Cliente& EcoCityMoto::buscarCliente(string dni){
+Cliente* EcoCityMoto::buscarCliente(string dni){
     map<string,Cliente>::iterator it;
     it=clientes.find(dni);
     if(it!= clientes.end()){
         //return (&(it->second)); //ToDo: cambiar cabacera referencia por puntero para que esto funcione
-        Cliente &encontrado =(it->second);
+        Cliente* encontrado =(&(it->second));
         return encontrado;
     }
         
