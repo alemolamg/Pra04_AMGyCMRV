@@ -115,7 +115,7 @@ void Cliente::crearItinerario(int num, int idUltimo, UTM min, UTM max) {
         m->setPosicion(finNuevo);
         rutas.push_back(it2);
         
-        std::cout<<"Mat moto:" << (m->getId()) <<" pos moto:"<< (m->getPosicion().latitud)<<m->getPosicion().longitud << std::endl;
+        //std::cout<<"Mat moto:" << (m->getId()) <<" pos moto:"<< (m->getPosicion().latitud)<<m->getPosicion().longitud << std::endl;
          
     } 
     
