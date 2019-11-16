@@ -17,9 +17,9 @@ int main(){
      try{ 
         //0)creamos estructura y se cargan clientes y motos dentro
         cout << "Creando Eco.... Comienzo de lectura de ficheros " << endl;   
-        EcoCityMoto eco("clientes_v2.csv","motos.txt"); 
+        //EcoCityMoto eco("clientes_v2.csv","motos.txt"); 
         //EcoCityMoto eco("clientes_v5.csv","motos2.txt"); 
-        //EcoCityMoto eco("prueba.txt","motos2.txt");  
+        EcoCityMoto eco("prueba.txt","motos2.txt");  
     
         //1) Añadir a la empresa un nuevo cliente que no exista previamente
         Cliente cliente("50617459W", "Pepito Hernandez" , "passph", "Universidad", 37.5, 3.5, &eco);
